@@ -1,0 +1,110 @@
+/* =============================================================================
+   Waybar style – Solarized Night palette
+   Base:     #002b36
+   Surface:  #073642
+   Muted:    #586e75
+   Subtle:   #657b83
+   Body:     #839496
+   Emphasis: #93a1a1
+   Heading:  #fdf6e3
+   Accent-1: #268bd2 (blue)
+   Accent-2: #2aa198 (cyan)
+   Accent-3: #859900 (green)
+   Accent-4: #b58900 (yellow)
+   Accent-5: #cb4b16 (orange)
+   Accent-6: #dc322f (red)
+   Accent-7: #d33682 (magenta)
+   ============================================================================= */
+
+* {
+    font-family: "JetBrainsMonoNL Nerd Font", monospace;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(0, 43, 54, 0.92);
+    color: #839496;
+    transition-property: background-color;
+    transition-duration: 0.3s;
+    border-bottom: 2px solid rgba(7, 54, 66, 0.9);
+}
+
+/* ---- Workspaces ---- */
+#workspaces button {
+    padding: 0 8px;
+    background-color: transparent;
+    color: #586e75;
+    border-radius: 4px;
+    margin: 4px 2px;
+}
+
+#workspaces button:hover {
+    background: rgba(38, 139, 210, 0.15);
+    color: #93a1a1;
+}
+
+#workspaces button.active {
+    background: rgba(38, 139, 210, 0.25);
+    color: #268bd2;
+}
+
+#workspaces button.urgent {
+    background: rgba(220, 50, 47, 0.25);
+    color: #dc322f;
+}
+
+/* ---- Window title ---- */
+#window {
+    color: #93a1a1;
+    padding: 0 10px;
+}
+
+/* ---- Clock ---- */
+#clock {
+    color: #fdf6e3;
+    font-weight: bold;
+    padding: 0 12px;
+}
+
+/* ---- Right modules common ---- */
+#cpu,
+#memory,
+#temperature,
+#battery,
+#network,
+#bluetooth,
+#pulseaudio,
+#tray {
+    padding: 0 8px;
+    color: #839496;
+    background-color: rgba(7, 54, 66, 0.6);
+    border-radius: 6px;
+    margin: 4px 2px;
+}
+
+#cpu         { color: #2aa198; }
+#memory      { color: #859900; }
+#temperature { color: #b58900; }
+#temperature.critical { color: #dc322f; }
+#battery     { color: #839496; }
+#battery.charging  { color: #859900; }
+#battery.warning   { color: #b58900; }
+#battery.critical  { color: #dc322f; animation-name: blink; animation-duration: 0.5s; animation-iteration-count: infinite; }
+#network     { color: #268bd2; }
+#network.disconnected { color: #dc322f; }
+#bluetooth   { color: #6c71c4; }
+#pulseaudio  { color: #839496; }
+#pulseaudio.muted { color: #586e75; }
+
+#tray {
+    background-color: transparent;
+}
+#tray > .passive { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; background-color: rgba(203, 75, 22, 0.2); }
+
+@keyframes blink {
+    to { color: #fdf6e3; background-color: rgba(220, 50, 47, 0.4); }
+}
