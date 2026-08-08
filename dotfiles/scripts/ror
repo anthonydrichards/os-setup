@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# =============================================================================
+# ror – Run-or-Raise
+# Usage: ror <window-class> <launch-cmd> [extra args...]
+#
+# If a window matching <window-class> exists, focus it.
+# Otherwise launch <launch-cmd>.
+#
+# Examples:
+#   ror kitty  kitty
+#   ror code   code
+#   ror chromium chromium
+# =============================================================================
+set -euo pipefail
+
+CLASS="${1:?Usage: ror <class> <cmd> [args...]}"
+CMD="${2:?Usage: ror <class> <cmd> [args...]}"
+shift 2
+
+# Check if a window with matching class exists
+ADDR=$(hyprctl clients -j | \
+    python3 -c "
+import sys, json
+clients = json.load(sys.stdin)
+cls = '${CLASS}'.lower()
+for c in clients:
+    if cls in c.get('class','').lower():
+        print(c['address'])
+        break
+")
+
+if [[ -n "${ADDR}" ]]; then
+    # Focus the existing window
+    hyprctl dispatch focuswindow "address:${ADDR}"
+else
+    # Launch the application
+    exec "${CMD}" "$@"
+fi

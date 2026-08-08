@@ -1,0 +1,36 @@
+# =============================================================================
+# mako config – Solarized Night notifications
+# =============================================================================
+
+font            = JetBrainsMonoNL Nerd Font 11
+background-color = #073642ee
+text-color      = #839496
+border-color    = #268bd2bb
+progress-color  = over #073642ff
+border-size     = 2
+border-radius   = 8
+width           = 320
+height          = 110
+padding         = 12
+margin          = 8
+anchor          = top-right
+default-timeout = 5000
+max-visible     = 5
+sort            = -time
+icons           = 1
+icon-path       = /usr/share/icons/Papirus-Dark
+max-icon-size   = 48
+
+[urgency=low]
+background-color = #002b36dd
+border-color     = #586e75aa
+
+[urgency=normal]
+background-color = #073642ee
+border-color     = #268bd2bb
+
+[urgency=high]
+background-color = #073642ff
+border-color     = #dc322fff
+text-color       = #fdf6e3
+default-timeout  = 0

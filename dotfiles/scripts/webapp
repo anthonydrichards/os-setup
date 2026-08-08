@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# =============================================================================
+# webapp – Chromium web-app run-or-raise
+# Usage: webapp "<Window Title>" "<url>" "<chromium-app-flag>"
+#
+# If a chromium window with a title containing <Window Title> exists, focus it.
+# Otherwise launch chromium in app mode for the given URL.
+# =============================================================================
+set -euo pipefail
+
+TITLE="${1:?Usage: webapp <title> <url> <chromium-app-flag>}"
+URL="${2:?}"
+APP_FLAG="${3:?}"
+
+ADDR=$(hyprctl clients -j | \
+    python3 -c "
+import sys, json
+clients = json.load(sys.stdin)
+title = '${TITLE}'.lower()
+for c in clients:
+    if 'chromium' in c.get('class','').lower() and title in c.get('title','').lower():
+        print(c['address'])
+        break
+")
+
+if [[ -n "${ADDR}" ]]; then
+    hyprctl dispatch focuswindow "address:${ADDR}"
+else
+    exec chromium \
+        --new-window \
+        "${APP_FLAG}" \
+        --force-dark-mode \
+        --enable-features=WebUIDarkMode \
+        "${URL}"
+fi

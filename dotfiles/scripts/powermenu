@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# =============================================================================
+# powermenu – Fuzzel-powered power menu
+# =============================================================================
+set -euo pipefail
+
+OPTIONS="  Lock\n  Suspend\n  Hibernate\n  Reboot\n  Shutdown\n  Logout"
+
+CHOICE=$(printf "%b" "${OPTIONS}" | fuzzel --dmenu --prompt "Power: " --lines 6 --width 20)
+
+case "${CHOICE}" in
+    *Lock*)      loginctl lock-session ;;
+    *Suspend*)   systemctl suspend ;;
+    *Hibernate*) systemctl hibernate ;;
+    *Reboot*)    systemctl reboot ;;
+    *Shutdown*)  systemctl poweroff ;;
+    *Logout*)    hyprctl dispatch exit ;;
+esac

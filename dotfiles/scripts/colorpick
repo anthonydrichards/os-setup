@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# =============================================================================
+# hyprpicker-area – Colour picker wrapper (saves hex to clipboard)
+# Requires: hyprpicker (yay -S hyprpicker)
+# =============================================================================
+hyprpicker -a -n
