@@ -244,7 +244,7 @@ if command -v code &>/dev/null; then
         warn "VSCode extension install failed – install 'guilhermerodz.solarized-night' manually"
 fi
 
-deploy "vscode/settings.json" ".config/Code - OSS/User/settings.json"
+deploy "vscode/settings.json" ".config/Code/User/settings.json"
 
 # Ensure scripts are executable
 chmod +x "${HOME}/.local/bin/"* 2>/dev/null || true
