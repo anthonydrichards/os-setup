@@ -129,6 +129,7 @@ reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist
 info "Installing base system..."
 pacstrap -K /mnt \
     base base-devel linux linux-headers linux-firmware \
+    nvidia \
     amd-ucode \
     networkmanager \
     grub efibootmgr \
@@ -148,7 +149,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 # ---------------------------------------------------------------------------
 info "Configuring system inside chroot..."
 
-arch-chroot /mnt /bin/bash <<CHROOT
+arch-chroot /mnt env TIMEZONE="${TIMEZONE}" LOCALE="${LOCALE}" KEYMAP="${KEYMAP}" HOSTNAME="${HOSTNAME}" USERNAME="${USERNAME}" /bin/bash <<'CHROOT'
 set -euo pipefail
 
 # Timezone
@@ -190,11 +191,11 @@ systemctl enable NetworkManager
 
 # Root password
 echo "root:changeme" | chpasswd
-warn_msg() { echo "[WARN] \$1"; }
+warn_msg() { echo "[WARN] $1"; }
 warn_msg "Root password set to 'changeme' – change immediately after boot."
 
 # Create user
-useradd -m -G wheel,audio,video,storage,optical,input,gamemode -s /bin/bash ${USERNAME}
+useradd -m -G wheel,audio,video,storage,optical,input -s /bin/bash ${USERNAME}
 echo "${USERNAME}:changeme" | chpasswd
 warn_msg "User password set to 'changeme' – change after first login."
 
@@ -217,7 +218,7 @@ Description=Rebuild initramfs for NVIDIA driver update
 Depends=mkinitcpio
 When=PostTransaction
 NeedsTargets
-Exec=/bin/sh -c 'while read -r trg; do case \$trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
+Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
 HOOK
 
 CHROOT
