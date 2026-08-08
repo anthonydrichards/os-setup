@@ -144,7 +144,6 @@ fi
 info "Installing AUR packages..."
 yay -S --needed --noconfirm \
     visual-studio-code-bin \
-    greetd-regreet \
     hyprpicker \
     \
     `# --- Cursor theme (Bibata – neutral dark, pairs well with Solarized Night) ---` \
