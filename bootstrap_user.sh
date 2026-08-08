@@ -149,6 +149,7 @@ yay -S --needed --noconfirm \
     visual-studio-code-bin \
     hyprpicker \
     1password \
+    opencode-bin \
     \
     `# --- Cursor theme (Bibata – neutral dark, pairs well with Solarized Night) ---` \
     bibata-cursor-theme \
@@ -236,6 +237,14 @@ deploy "scripts"             ".local/bin"
 deploy "bash/.bashrc"        ".bashrc"
 deploy "bash/.bash_profile"  ".bash_profile"
 deploy "nvim"                ".config/nvim"
+
+# VSCode: install Solarized Night extension
+if command -v code &>/dev/null; then
+    code --install-extension guilhermerodz.solarized-night --force || \
+        warn "VSCode extension install failed – install 'guilhermerodz.solarized-night' manually"
+fi
+
+deploy "vscode/settings.json" ".config/Code - OSS/User/settings.json"
 
 # Ensure scripts are executable
 chmod +x "${HOME}/.local/bin/"* 2>/dev/null || true
