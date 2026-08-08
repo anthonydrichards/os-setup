@@ -120,7 +120,7 @@ hyprctl monitors
 # Should show: refreshRate: 165.000000
 ```
 
-If not, edit `dotfiles/hypr/monitors.conf` and `hyprctl reload`.
+If not, edit `dotfiles/hypr/monitors.lua` and `hyprctl reload`.
 
 ### Verify NVIDIA Acceleration
 
@@ -184,8 +184,8 @@ nmcli device status
 
 | File | Purpose |
 |------|---------|
-| `dotfiles/hypr/monitors.conf` | Change resolution / refresh rate |
-| `dotfiles/hypr/keybinds.conf` | All keyboard shortcuts |
+| `dotfiles/hypr/monitors.lua` | Change resolution / refresh rate |
+| `dotfiles/hypr/keybinds.lua` | All keyboard shortcuts |
 | `dotfiles/waybar/config.jsonc` | Bar modules |
 | `dotfiles/waybar/style.css` | Bar colours |
 | `dotfiles/kitty/kitty.conf` | Terminal font/colours |
@@ -201,7 +201,7 @@ nmcli device status
 - The NVIDIA proprietary driver stack (`nvidia`, `nvidia-utils`) is used. nouveau is blacklisted automatically by the nvidia package.
 - `nvidia_drm.modeset=1` is set in GRUB kernel parameters for proper Wayland support.
 - AMD CPU microcode (`amd-ucode`) is installed for Ryzen 9 5950X.
-- Caps Lock is remapped to Escape (see `input.conf` – remove `caps:escape` to revert).
+- Caps Lock is remapped to Escape (see `input.lua` – remove `caps:escape` to revert).
 - Default passwords are `changeme` – **change immediately** after install.
 - The wallpaper is downloaded from GitHub; if the URL changes, update `WALLPAPER_URL` in `bootstrap_user.sh`.
 - `dex` must be installed for XDG autostart (`yay -S dex` or `pacman -S dex`).
