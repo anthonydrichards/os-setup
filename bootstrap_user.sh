@@ -40,7 +40,7 @@ sudo sed -i 's/^#Color/Color/' /etc/pacman.conf
 if ! grep -q '^\[multilib\]' /etc/pacman.conf; then
     echo -e '\n[multilib]\nInclude = /etc/pacman.d/mirrorlist' | sudo tee -a /etc/pacman.conf
 fi
-sudo pacman -Sy --noconfirm
+sudo pacman -Syu --noconfirm
 
 # ---------------------------------------------------------------------------
 # OFFICIAL REPO PACKAGES
