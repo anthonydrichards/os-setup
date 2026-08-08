@@ -124,6 +124,9 @@ sudo pacman -S --needed --noconfirm \
     `# --- Chromium ---` \
     chromium \
     \
+    `# --- Calculator ---` \
+    qalculate-gtk \
+    \
     `# --- Hyprland extras ---` \
     hyprpaper dex
 
@@ -145,6 +148,7 @@ info "Installing AUR packages..."
 yay -S --needed --noconfirm \
     visual-studio-code-bin \
     hyprpicker \
+    1password \
     \
     `# --- Cursor theme (Bibata – neutral dark, pairs well with Solarized Night) ---` \
     bibata-cursor-theme \
@@ -154,6 +158,20 @@ yay -S --needed --noconfirm \
     \
     `# --- papirus icons (dark variant works great with Solarized Night) ---` \
     papirus-icon-theme
+
+# ---------------------------------------------------------------------------
+# 1PASSWORD CHROMIUM EXTENSION (managed policy)
+# ---------------------------------------------------------------------------
+info "Configuring 1Password Chromium extension policy..."
+CHROMIUM_POLICY_DIR="/etc/chromium/policies/managed"
+sudo mkdir -p "${CHROMIUM_POLICY_DIR}"
+sudo tee "${CHROMIUM_POLICY_DIR}/1password.json" > /dev/null <<'POLICY'
+{
+  "ExtensionInstallForcelist": [
+    "aeblfdkhhhdcdjpifhhbdiojplfjncoa;https://clients2.google.com/service/update2/crx"
+  ]
+}
+POLICY
 
 # ---------------------------------------------------------------------------
 # ENABLE SYSTEM SERVICES
