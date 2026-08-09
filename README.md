@@ -98,7 +98,7 @@ The script will:
 - Download the space wallpaper
 - Symlink all dotfiles into `~/.config/`
 - Apply GTK/cursor theme via `gsettings`
-- Configure greetd + regreet login manager
+- Configure greetd + regreet login manager (via `cage`)
 - Set up zram for in-memory swap
 
 ---
