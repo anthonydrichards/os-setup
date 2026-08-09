@@ -83,7 +83,7 @@ sudo pacman -S --needed --noconfirm \
     network-manager-applet \
     \
     `# --- NVIDIA ---` \
-    nvidia nvidia-utils nvidia-settings \
+    nvidia-open-dkms nvidia-utils nvidia-settings \
     lib32-nvidia-utils opencl-nvidia \
     libvdpau libva-nvidia-driver \
     \

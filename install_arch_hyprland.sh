@@ -129,9 +129,9 @@ reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist
 info "Installing base system..."
 pacstrap -K /mnt \
     base base-devel linux linux-headers linux-firmware \
-    nvidia-dkms nvidia-utils \
+    nvidia-open-dkms nvidia-utils \
     amd-ucode \
-    networkmanager \
+    networkmanager iwd \
     grub efibootmgr \
     sudo git vim nano \
     zsh bash \
@@ -186,8 +186,8 @@ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=3 rd.udev.log_level=3 nvidia_drm.modeset=1 amd_pstate=active"/' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-# Enable NetworkManager
-systemctl enable NetworkManager
+# Enable NetworkManager + iwd
+systemctl enable NetworkManager iwd
 
 # Root password
 echo "root:changeme" | chpasswd
@@ -210,7 +210,7 @@ Operation=Install
 Operation=Upgrade
 Operation=Remove
 Type=Package
-Target=nvidia-dkms
+Target=nvidia-open-dkms
 Target=linux
 
 [Action]
