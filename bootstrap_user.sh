@@ -53,7 +53,7 @@ sudo pacman -S --needed --noconfirm \
     wayland wayland-protocols libdrm \
     \
     `# --- Display / Login ---` \
-    greetd greetd-regreet \
+    greetd greetd-regreet cage \
     \
     `# --- Bar / Notifications / Clipboard ---` \
     waybar \
@@ -273,7 +273,7 @@ sudo tee /etc/greetd/config.toml > /dev/null <<'GREETD'
 vt = 1
 
 [default_session]
-command = "regreet"
+command = "dbus-run-session -- cage -s -- regreet"
 user = "greeter"
 GREETD
 
