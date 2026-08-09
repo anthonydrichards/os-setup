@@ -57,7 +57,7 @@ bash /tmp/install.sh
 The script will:
 - Rank UK mirrors
 - Partition and format the NVMe (`EFI + swap + root`)
-- Install base system, AMD microcode, GRUB, NetworkManager
+- Install base system, AMD microcode, GRUB, NetworkManager, and `iwd` (`iwctl`)
 - Configure locale (`en_GB.UTF-8`), keymap (`gb`), timezone (`Europe/London`)
 - Set `nvidia_drm.modeset=1` kernel parameter
 - Create your user with `wheel` group (sudo)
@@ -198,7 +198,7 @@ nmcli device status
 ## Assumptions & Notes
 
 - GRUB is the bootloader; system boots in UEFI mode.
-- The NVIDIA proprietary driver stack (`nvidia`, `nvidia-utils`) is used. nouveau is blacklisted automatically by the nvidia package.
+- The NVIDIA driver stack (`nvidia-open-dkms`, `nvidia-utils`) is used for the target RTX 3090 hardware. nouveau is blacklisted automatically by the NVIDIA packages.
 - `nvidia_drm.modeset=1` is set in GRUB kernel parameters for proper Wayland support.
 - AMD CPU microcode (`amd-ucode`) is installed for Ryzen 9 5950X.
 - Caps Lock is remapped to Escape (see `input.lua` – remove `caps:escape` to revert).

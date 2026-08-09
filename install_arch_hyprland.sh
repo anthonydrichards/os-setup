@@ -129,9 +129,9 @@ reflector --latest 20 --sort rate --save /etc/pacman.d/mirrorlist
 info "Installing base system..."
 pacstrap -K /mnt \
     base base-devel linux linux-headers linux-firmware \
-    nvidia-dkms nvidia-utils \
+    nvidia-open-dkms nvidia-utils \
     amd-ucode \
-    networkmanager \
+    networkmanager iwd \
     grub efibootmgr \
     sudo git vim nano \
     zsh bash \
@@ -210,7 +210,7 @@ Operation=Install
 Operation=Upgrade
 Operation=Remove
 Type=Package
-Target=nvidia-dkms
+Target=nvidia-open-dkms
 Target=linux
 
 [Action]
