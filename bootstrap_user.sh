@@ -104,7 +104,7 @@ sudo pacman -S --needed --noconfirm \
     \
     `# --- Shell / CLI tools ---` \
     bash bash-completion \
-    git git-delta \
+    git git-delta gh \
     neovim \
     tmux \
     btop htop \
