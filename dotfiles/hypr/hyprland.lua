@@ -4,7 +4,8 @@
 -- =============================================================================
 
 -- Source modular configs
-local config_dir = os.getenv("HOME") .. "/.config/hypr"
+local home = os.getenv("HOME")
+local config_dir = home .. "/.config/hypr"
 
 dofile(config_dir .. "/monitors.lua")
 dofile(config_dir .. "/input.lua")
@@ -55,6 +56,10 @@ hl.animation({
 
 hl.env("XCURSOR_THEME", "Bibata-Modern-Classic")
 hl.env("XCURSOR_SIZE", "24")
+hl.env("XDG_CONFIG_HOME", home .. "/.config")
+hl.env("XDG_CACHE_HOME", home .. "/.cache")
+hl.env("XDG_DATA_HOME", home .. "/.local/share")
+hl.env("XDG_STATE_HOME", home .. "/.local/state")
 hl.env("GDK_BACKEND", "wayland,x11")
 hl.env("SDL_VIDEODRIVER", "wayland")
 hl.env("CLUTTER_BACKEND", "wayland")

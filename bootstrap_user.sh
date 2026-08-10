@@ -313,7 +313,6 @@ greeting_msg = "Welcome back"
 XCURSOR_THEME = "Bibata-Modern-Classic"
 XCURSOR_SIZE = "24"
 GTK_THEME = "adw-gtk3-dark"
-XDG_CONFIG_HOME = "/var/lib/greetd/.config"
 REGREETCONF
 
 # ---------------------------------------------------------------------------
