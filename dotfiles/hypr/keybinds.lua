@@ -27,7 +27,7 @@ hl.bind(mod .. " + SPACE", hl.dsp.exec_cmd("fuzzel"))
 hl.bind(mod .. " + V", hl.dsp.exec_cmd("cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"))
 hl.bind(mod .. " + SHIFT + C", hl.dsp.exec_cmd("hyprpicker -a"))
 hl.bind(mod .. " + ESCAPE", hl.dsp.exec_cmd("hyprlock"))
-hl.bind(mod .. " + SHIFT + Q", hl.dsp.window.close())
+hl.bind(mod .. " + W", hl.dsp.window.close())
 hl.bind(mod .. " + SHIFT + E", hl.dsp.exec_cmd("~/.local/bin/powermenu"))
 
 -- ---------------------------------------------------------------------------

@@ -1,0 +1,80 @@
+/* Solarized Dark overrides for GTK4 apps (e.g. regreet). */
+
+@define-color base03 #002b36;
+@define-color base02 #073642;
+@define-color base01 #586e75;
+@define-color base0  #839496;
+@define-color base1  #93a1a1;
+@define-color base3  #fdf6e3;
+
+@define-color blue   #268bd2;
+@define-color cyan   #2aa198;
+@define-color green  #859900;
+@define-color yellow #b58900;
+@define-color red    #dc322f;
+
+:root {
+  --accent-bg-color: @blue;
+  --accent-color: @base3;
+  --window-bg-color: @base03;
+  --window-fg-color: @base0;
+  --view-bg-color: @base02;
+  --view-fg-color: @base0;
+  --headerbar-bg-color: @base02;
+  --headerbar-fg-color: @base1;
+  --headerbar-border-color: @base01;
+  --popover-bg-color: @base02;
+  --popover-fg-color: @base0;
+  --warning-color: @yellow;
+  --error-color: @red;
+  --success-color: @green;
+}
+
+window,
+dialog,
+popover,
+menu,
+menubar {
+  background-color: @base03;
+  color: @base0;
+}
+
+headerbar,
+.titlebar {
+  background: @base02;
+  color: @base1;
+  border-bottom: 1px solid @base01;
+}
+
+entry,
+button,
+spinbutton,
+combobox,
+list,
+listview,
+columnview,
+treeview,
+textview,
+scrolledwindow,
+.view,
+.sidebar,
+.navigation-sidebar {
+  background-color: @base02;
+  color: @base0;
+  border-color: @base01;
+}
+
+entry:focus,
+button:hover,
+row:selected,
+listview row:selected,
+columnview row:selected {
+  background-color: alpha(@blue, 0.24);
+  color: @base3;
+}
+
+tooltip {
+  background-color: @base02;
+  color: @base3;
+  border: 1px solid @base01;
+}

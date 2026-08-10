@@ -1,4 +1,9 @@
 {
-    "workbench.colorTheme": "Solarized Night",
-    "editor.fontSize": 14
+    "workbench.colorTheme": "Solarized Dark",
+    "editor.fontSize": 18,
+    "chat.tools.urls.autoApprove": {
+        "https://code.visualstudio.com": true,
+        "https://github.com/microsoft/vscode/wiki/*": true,
+        "https://wiki.hypr.land": true
+    }
 }

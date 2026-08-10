@@ -233,6 +233,7 @@ deploy "fuzzel"              ".config/fuzzel"
 deploy "mako"                ".config/mako"
 deploy "gtk-3.0"             ".config/gtk-3.0"
 deploy "gtk-4.0"             ".config/gtk-4.0"
+deploy "xfce4"               ".config/xfce4"
 deploy "scripts"             ".local/bin"
 deploy "bash/.bashrc"        ".bashrc"
 deploy "bash/.bash_profile"  ".bash_profile"
@@ -277,6 +278,19 @@ command = "dbus-run-session -- cage -s -- regreet"
 user = "greeter"
 GREETD
 
+# Keep regreet on the same GTK configuration as the desktop session.
+sudo install -d -o greeter -g greeter /var/lib/greetd/.config/gtk-3.0 /var/lib/greetd/.config/gtk-4.0
+sudo install -m 0644 -o greeter -g greeter "${HOME}/.config/gtk-3.0/settings.ini" /var/lib/greetd/.config/gtk-3.0/settings.ini
+sudo install -m 0644 -o greeter -g greeter "${HOME}/.config/gtk-4.0/settings.ini" /var/lib/greetd/.config/gtk-4.0/settings.ini
+
+if [[ -f "${HOME}/.config/gtk-3.0/gtk.css" ]]; then
+    sudo install -m 0644 -o greeter -g greeter "${HOME}/.config/gtk-3.0/gtk.css" /var/lib/greetd/.config/gtk-3.0/gtk.css
+fi
+
+if [[ -f "${HOME}/.config/gtk-4.0/gtk.css" ]]; then
+    sudo install -m 0644 -o greeter -g greeter "${HOME}/.config/gtk-4.0/gtk.css" /var/lib/greetd/.config/gtk-4.0/gtk.css
+fi
+
 sudo mkdir -p /etc/greetd
 sudo tee /etc/greetd/regreet.toml > /dev/null <<REGREETCONF
 [background]
@@ -285,10 +299,20 @@ fit = "Cover"
 
 [GTK]
 application_id = "regreet"
+application_prefer_dark_theme = true
+cursor_theme_name = "Bibata-Modern-Classic"
+font_name = "JetBrainsMonoNL Nerd Font 12"
+icon_theme_name = "Papirus-Dark"
+theme_name = "adw-gtk3-dark"
+
+[appearance]
+greeting_msg = "Welcome back"
 
 [env]
 XCURSOR_THEME = "Bibata-Modern-Classic"
 XCURSOR_SIZE = "24"
+GTK_THEME = "adw-gtk3-dark"
+XDG_CONFIG_HOME = "/var/lib/greetd/.config"
 REGREETCONF
 
 # ---------------------------------------------------------------------------
