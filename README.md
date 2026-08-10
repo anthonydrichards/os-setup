@@ -107,7 +107,7 @@ The script will:
 
 1. Reboot: `sudo reboot`
 2. At the **regreet** login screen, select `Hyprland` as the session and log in.
-3. Hyprland will start. Waybar appears at the top.
+3. Hyprland will start. Waybar appears at the top, and GUI apps will use your own `~/.config`, `~/.cache`, and `~/.local/share` directories rather than the greeter account.
 
 ---
 
