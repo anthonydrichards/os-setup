@@ -24,7 +24,7 @@
 -- XDG autostart (e.g. for apps that register with XDG)
 
 hl.on("hyprland.start", function()
-    hl.exec_cmd("hyprpaper")
+    hl.exec_cmd("hyprpaper -c \"$HOME/.config/hypr/hyprpaper.conf\"")
     hl.exec_cmd("waybar")
     hl.exec_cmd("mako")
     hl.exec_cmd("wl-paste --type text  --watch cliphist store")
