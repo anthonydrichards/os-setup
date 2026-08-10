@@ -5,6 +5,9 @@
 
 -- Source modular configs
 local home = os.getenv("HOME")
+if not home then
+  error("HOME environment variable is not set; cannot load Hyprland config")
+end
 local config_dir = home .. "/.config/hypr"
 
 dofile(config_dir .. "/monitors.lua")
