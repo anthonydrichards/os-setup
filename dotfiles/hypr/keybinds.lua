@@ -9,9 +9,9 @@ local mod = "SUPER"
 -- ---------------------------------------------------------------------------
 -- APPLICATION LAUNCHERS (Run-or-raise via script)
 -- ---------------------------------------------------------------------------
-hl.bind(mod .. " + T", hl.dsp.exec_cmd("~/.local/bin/ror kitty        \"kitty\""))
-hl.bind(mod .. " + B", hl.dsp.exec_cmd("~/.local/bin/ror chromium     \"chromium\""))
-hl.bind(mod .. " + C", hl.dsp.exec_cmd("~/.local/bin/ror code         \"code\""))
+hl.bind(mod .. " + T", hl.dsp.exec_cmd("kitty"))
+hl.bind(mod .. " + B", hl.dsp.exec_cmd("chromium"))
+hl.bind(mod .. " + C", hl.dsp.exec_cmd("code"))
 hl.bind(mod .. " + SHIFT + F", hl.dsp.exec_cmd("thunar"))
 
 -- ---------------------------------------------------------------------------

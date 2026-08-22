@@ -17,7 +17,7 @@ CLASS="${1:?Usage: ror <class> <cmd> [args...]}"
 CMD="${2:?Usage: ror <class> <cmd> [args...]}"
 shift 2
 
-# Check if a window with matching class exists
+# Locate a window whose class contains the requested class.
 ADDR=$(hyprctl clients -j | \
     python3 -c "
 import sys, json
@@ -25,13 +25,18 @@ clients = json.load(sys.stdin)
 cls = '${CLASS}'.lower()
 for c in clients:
     if cls in c.get('class','').lower():
-        print(c['address'])
+        print(c['address'], c['workspace']['id'])
         break
 ")
 
 if [[ -n "${ADDR}" ]]; then
-    # Focus the existing window
-    hyprctl dispatch focuswindow "address:${ADDR}"
+    WS="${ADDR##* }"
+    WIN="${ADDR%% *}"
+    # Hyprland 0.56's Lua API requires hl.dsp.focus(...).  The old
+    # 'hyprctl dispatch focuswindow address:...' shorthand is broken
+    # (it fails to quote the dispatcher argument).  The first focus
+    # switches workspace, the second focuses the exact window.
+    hyprctl repl "pcall(function() hl.dsp.focus({ workspace = ${WS} }); hl.dsp.focus({ window = 'address:${WIN}' }) end)"
 else
     # Launch the application
     exec "${CMD}" "$@"

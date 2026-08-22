@@ -1,0 +1,238 @@
+/*
+ * ReGreet Solarized Dark theme for GTK4.
+ *
+ * The greeter runs as the "greeter" user, so this file must be copied to
+ * /var/lib/greetd/.config/gtk-4.0/gtk.css (see bootstrap_user.sh).
+ *
+ * Class references from https://github.com/rharish101/ReGreet/blob/main/src/gui/templates.rs
+ */
+
+@define-color base03 #002b36;
+@define-color base02 #073642;
+@define-color base01 #586e75;
+@define-color base0  #839496;
+@define-color base1  #93a1a1;
+@define-color base3  #fdf6e3;
+
+@define-color blue   #268bd2;
+@define-color cyan   #2aa198;
+@define-color green  #859900;
+@define-color yellow #b58900;
+@define-color red    #dc322f;
+
+/* Global window/background */
+window, .background {
+  background-color: alpha(@base03, 0.92);
+  color: @base0;
+  font-family: "JetBrainsMonoNL Nerd Font";
+}
+
+/* Frames / cards */
+frame {
+  background-color: @base02;
+  border: 1px solid @base01;
+  border-radius: 8px;
+}
+
+frame.background {
+  background-color: alpha(@base02, 0.88);
+  border: 1px solid @base01;
+  border-radius: 12px;
+  padding: 6px;
+}
+
+/* Labels */
+label {
+  color: @base0;
+}
+
+label:disabled {
+  color: @base01;
+}
+
+/* Message label (bold greeting) */
+label {
+  caret-color: @base0;
+}
+
+/* Entries */
+entry, passwordentry {
+  background-color: @base03;
+  color: @base0;
+  border: 1px solid @base01;
+  border-radius: 6px;
+  padding: 6px;
+  caret-color: @base0;
+  transition: border-color 0.15s ease-in-out;
+}
+
+entry:focus, passwordentry:focus {
+  border-color: @blue;
+  background-color: @base03;
+  color: @base3;
+  box-shadow: 0 0 0 1px alpha(@blue, 0.35);
+}
+
+entry:disabled, passwordentry:disabled {
+  background-color: alpha(@base02, 0.6);
+  color: @base01;
+  border-color: alpha(@base01, 0.5);
+}
+
+/* Combo boxes / dropdowns */
+combobox, dropdown {
+  background-color: @base03;
+  color: @base0;
+  border: 1px solid @base01;
+  border-radius: 6px;
+}
+
+combobox button, dropdown button {
+  background-color: @base03;
+  color: @base0;
+  border: 1px solid @base01;
+  border-radius: 6px;
+}
+
+combobox button:hover, dropdown button:hover {
+  border-color: @blue;
+}
+
+/* Buttons */
+button {
+  background-color: @base02;
+  color: @base0;
+  border: 1px solid @base01;
+  border-radius: 6px;
+  padding: 6px 12px;
+  transition: all 0.15s ease-in-out;
+}
+
+button:hover {
+  background-color: alpha(@blue, 0.2);
+  color: @base3;
+  border-color: @blue;
+}
+
+button:active {
+  background-color: alpha(@blue, 0.35);
+}
+
+button:disabled {
+  background-color: alpha(@base02, 0.5);
+  color: @base01;
+  border-color: alpha(@base01, 0.4);
+}
+
+/* Suggested action (Login) */
+button.suggested-action {
+  background-color: @blue;
+  color: @base3;
+  border-color: @blue;
+}
+
+button.suggested-action:hover {
+  background-color: shade(@blue, 1.15);
+  border-color: shade(@blue, 1.15);
+}
+
+button.suggested-action:active {
+  background-color: shade(@blue, 0.85);
+}
+
+/* Destructive action (Reboot / Power Off) */
+button.destructive-action {
+  background-color: @red;
+  color: @base3;
+  border-color: @red;
+}
+
+button.destructive-action:hover {
+  background-color: shade(@red, 1.15);
+  border-color: shade(@red, 1.15);
+}
+
+button.destructive-action:active {
+  background-color: shade(@red, 0.85);
+}
+
+/* Toggle buttons (manual entry toggles) */
+togglebutton {
+  background-color: @base02;
+  color: @base0;
+  border: 1px solid @base01;
+  border-radius: 6px;
+}
+
+togglebutton:hover {
+  background-color: alpha(@cyan, 0.2);
+  border-color: @cyan;
+}
+
+togglebutton:checked {
+  background-color: @cyan;
+  color: @base3;
+  border-color: @cyan;
+}
+
+/* Info bar (notification bar) */
+infobar {
+  background-color: @base02;
+  color: @base0;
+  border: 1px solid @base01;
+  border-radius: 6px;
+}
+
+infobar.info {
+  background-color: alpha(@blue, 0.2);
+  color: @base3;
+  border-color: @blue;
+}
+
+infobar.warning {
+  background-color: alpha(@yellow, 0.2);
+  color: @base3;
+  border-color: @yellow;
+}
+
+infobar.error {
+  background-color: alpha(@red, 0.2);
+  color: @base3;
+  border-color: @red;
+}
+
+/* Popovers / menus */
+popover, menu {
+  background-color: @base02;
+  color: @base0;
+  border: 1px solid @base01;
+  border-radius: 6px;
+}
+
+/* Tooltips */
+tooltip {
+  background-color: @base02;
+  color: @base3;
+  border: 1px solid @base01;
+  border-radius: 6px;
+}
+
+/* Scrollbars */
+scrollbar {
+  background-color: alpha(@base02, 0.5);
+}
+
+scrollbar slider {
+  background-color: @base01;
+  border-radius: 4px;
+}
+
+scrollbar slider:hover {
+  background-color: @base0;
+}
+
+/* Selection */
+::selection {
+  background-color: alpha(@blue, 0.35);
+  color: @base3;
+}

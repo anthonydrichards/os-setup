@@ -11,6 +11,7 @@ This is a personal Arch Linux + Hyprland desktop setup repo. There is no build s
 | `dotfiles/` | Symlinked to `~/.config/<dir>` by bootstrap |
 | `dotfiles/scripts/` | Symlinked to `~/.local/bin/` |
 | `dotfiles/hypr/` | Hyprland config (Lua API, not `.conf`) |
+| `dotfiles/regreet/` | ReGreet Solarized Dark theme (`regreet.css`) |
 | `prompts/` | Reference LLM prompt — not executed |
 
 ## Provisioning commands

@@ -292,6 +292,13 @@ if [[ -f "${HOME}/.config/gtk-4.0/gtk.css" ]]; then
     sudo install -m 0644 -o greeter -g greeter "${HOME}/.config/gtk-4.0/gtk.css" /var/lib/greetd/.config/gtk-4.0/gtk.css
 fi
 
+# Deploy the dedicated ReGreet Solarized Dark theme.
+# ReGreet runs as the "greeter" user, so its GTK4 CSS must be installed system-wide.
+if [[ -f "${HOME}/os-setup/dotfiles/regreet/regreet.css" ]]; then
+    sudo install -m 0644 -o greeter -g greeter "${HOME}/os-setup/dotfiles/regreet/regreet.css" /var/lib/greetd/.config/gtk-4.0/gtk.css
+    info "Deployed ReGreet Solarized Dark theme to /var/lib/greetd/.config/gtk-4.0/gtk.css"
+fi
+
 sudo mkdir -p /etc/greetd
 sudo tee /etc/greetd/regreet.toml > /dev/null <<REGREETCONF
 [background]

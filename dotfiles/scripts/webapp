@@ -19,12 +19,17 @@ clients = json.load(sys.stdin)
 title = '${TITLE}'.lower()
 for c in clients:
     if 'chromium' in c.get('class','').lower() and title in c.get('title','').lower():
-        print(c['address'])
+        print(c['address'], c['workspace']['id'])
         break
 ")
 
 if [[ -n "${ADDR}" ]]; then
-    hyprctl dispatch focuswindow "address:${ADDR}"
+    WS="${ADDR##* }"
+    WIN="${ADDR%% *}"
+    # Use the new Lua API directly; the old dispatcher shorthand is broken
+    # for 'address:...' arguments and calling hl.dispatch(...) incorrectly
+    # can abort Hyprland.
+    hyprctl repl "pcall(function() hl.dsp.focus({ workspace = ${WS} }); hl.dsp.focus({ window = 'address:${WIN}' }) end)"
 else
     exec chromium \
         --new-window \
