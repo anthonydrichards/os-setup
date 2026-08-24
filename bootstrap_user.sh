@@ -295,8 +295,8 @@ fi
 
 # Deploy the dedicated ReGreet Solarized Dark theme.
 # ReGreet loads this stylesheet from /etc/greetd/regreet.css by default (or via --style).
-if [[ -f "${HOME}/os-setup/dotfiles/regreet/regreet.css" ]]; then
-    sudo install -m 0644 -o root -g root "${HOME}/os-setup/dotfiles/regreet/regreet.css" /etc/greetd/regreet.css
+if [[ -f "${DOTFILES_DIR}/regreet/regreet.css" ]]; then
+    sudo install -m 0644 -o root -g root "${DOTFILES_DIR}/regreet/regreet.css" /etc/greetd/regreet.css
     info "Deployed ReGreet Solarized Dark theme to /etc/greetd/regreet.css"
 fi
 
