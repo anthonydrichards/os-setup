@@ -270,6 +270,7 @@ gsettings set org.gnome.desktop.interface color-scheme     "prefer-dark"
 # GREETD CONFIG
 # ---------------------------------------------------------------------------
 info "Configuring greetd..."
+sudo mkdir -p /etc/greetd
 sudo tee /etc/greetd/config.toml > /dev/null <<'GREETD'
 [terminal]
 vt = 1
@@ -299,7 +300,6 @@ if [[ -f "${HOME}/os-setup/dotfiles/regreet/regreet.css" ]]; then
     info "Deployed ReGreet Solarized Dark theme to /etc/greetd/regreet.css"
 fi
 
-sudo mkdir -p /etc/greetd
 sudo tee /etc/greetd/regreet.toml > /dev/null <<REGREETCONF
 [background]
 path = "${WALLPAPER_DEST}"
