@@ -2,7 +2,7 @@
  * ReGreet Solarized Dark theme for GTK4.
  *
  * The greeter runs as the "greeter" user, so this file must be copied to
- * /var/lib/greetd/.config/gtk-4.0/gtk.css (see bootstrap_user.sh).
+ * /etc/greetd/regreet.css (see bootstrap_user.sh).
  *
  * Class references from https://github.com/rharish101/ReGreet/blob/main/src/gui/templates.rs
  */

@@ -275,7 +275,7 @@ sudo tee /etc/greetd/config.toml > /dev/null <<'GREETD'
 vt = 1
 
 [default_session]
-command = "dbus-run-session -- cage -s -- regreet"
+command = "dbus-run-session -- cage -s -- regreet --style /etc/greetd/regreet.css"
 user = "greeter"
 GREETD
 
@@ -293,10 +293,10 @@ if [[ -f "${HOME}/.config/gtk-4.0/gtk.css" ]]; then
 fi
 
 # Deploy the dedicated ReGreet Solarized Dark theme.
-# ReGreet runs as the "greeter" user, so its GTK4 CSS must be installed system-wide.
+# ReGreet loads this stylesheet from /etc/greetd/regreet.css by default (or via --style).
 if [[ -f "${HOME}/os-setup/dotfiles/regreet/regreet.css" ]]; then
-    sudo install -m 0644 -o greeter -g greeter "${HOME}/os-setup/dotfiles/regreet/regreet.css" /var/lib/greetd/.config/gtk-4.0/gtk.css
-    info "Deployed ReGreet Solarized Dark theme to /var/lib/greetd/.config/gtk-4.0/gtk.css"
+    sudo install -m 0644 -o root -g root "${HOME}/os-setup/dotfiles/regreet/regreet.css" /etc/greetd/regreet.css
+    info "Deployed ReGreet Solarized Dark theme to /etc/greetd/regreet.css"
 fi
 
 sudo mkdir -p /etc/greetd
